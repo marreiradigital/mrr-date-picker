@@ -397,10 +397,3 @@ Possíveis extensões:
 * Modo mobile opcional usando picker nativo.
 
 ---
-
-## Licença
-
-Defina conforme sua preferência (MIT é comum para plugins utilitários).
-
-```
-```
