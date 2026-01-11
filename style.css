@@ -1,0 +1,429 @@
+:root{
+  --mrr-dp-bg: #ffffff;
+  --mrr-dp-fg: #111111;
+  --mrr-dp-muted: #6b7280;
+  --mrr-dp-border: #e5e7eb;
+  --mrr-dp-shadow: 0 10px 30px rgba(0,0,0,.12);
+  --mrr-dp-radius: 1.2rem;
+  --mrr-dp-radius-sm: .9rem;
+  --mrr-dp-focus: 0 0 0 .3rem rgba(17,17,17,.12);
+  --mrr-dp-day-size: 3.2rem;
+  --mrr-dp-font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji";
+}
+
+.mrr_dp{
+  position: relative;
+  display: inline-flex;
+  align-items: stretch;
+  width: 100%;
+  max-width: 100%;
+  font-family: var(--mrr-dp-font);
+}
+
+.mrr_dp__display{
+  width: 100%;
+  box-sizing: border-box;
+  border: .1rem solid var(--mrr-dp-border);
+  border-right: none;
+  border-radius: var(--mrr-dp-radius-sm) 0 0 var(--mrr-dp-radius-sm);
+  padding: 1.1rem 1.2rem;
+  font-size: 1.4rem;
+  line-height: 1.2;
+  color: var(--mrr-dp-fg);
+  background: var(--mrr-dp-bg);
+  outline: none;
+}
+
+.mrr_dp__display:focus{
+  box-shadow: var(--mrr-dp-focus);
+  border-color: rgba(17,17,17,.25);
+}
+
+.mrr_dp__btn{
+  flex: 0 0 auto;
+  border: .1rem solid var(--mrr-dp-border);
+  border-left: none;
+  border-radius: 0 var(--mrr-dp-radius-sm) var(--mrr-dp-radius-sm) 0;
+  background: var(--mrr-dp-bg);
+  color: var(--mrr-dp-muted);
+  width: 4.2rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+}
+
+.mrr_dp__btn:focus{
+  box-shadow: var(--mrr-dp-focus);
+}
+
+.mrr_dp__btn svg{
+  width: 1.8rem;
+  height: 1.8rem;
+}
+
+.mrr_dp__original{
+  display: none !important;
+}
+
+/* Popover */
+.mrr_dp__popover{
+  position: absolute;
+  top: calc(100% + .8rem);
+  left: 0;
+  z-index: 99999;
+  width: 32.4rem;
+  max-width: calc(100vw - 2rem);
+  background: var(--mrr-dp-bg);
+  color: var(--mrr-dp-fg);
+  border: .1rem solid var(--mrr-dp-border);
+  border-radius: var(--mrr-dp-radius);
+  box-shadow: var(--mrr-dp-shadow);
+  padding: 1.2rem;
+  display: none;
+  max-height: calc(100vh - 2rem);
+  overflow: auto;
+}
+
+.mrr_dp[data-open="1"] .mrr_dp__popover{
+  display: block;
+}
+
+/* Flip vertical quando faltar espaço */
+.mrr_dp.mrr_dp--flipY .mrr_dp__popover{
+  top: auto;
+  bottom: calc(100% + .8rem);
+}
+
+/* Alinha à direita quando estourar lateral */
+.mrr_dp.mrr_dp--alignRight .mrr_dp__popover{
+  left: auto;
+  right: 0;
+}
+
+.mrr_dp__top{
+  display: grid;
+  grid-template-columns: 3.6rem 1fr 3.6rem;
+  align-items: center;
+  gap: .8rem;
+  margin-bottom: .8rem;
+}
+
+.mrr_dp__nav{
+  width: 3.6rem;
+  height: 3.6rem;
+  border: .1rem solid var(--mrr-dp-border);
+  background: var(--mrr-dp-bg);
+  border-radius: .9rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--mrr-dp-fg);
+}
+
+.mrr_dp__nav:disabled{
+  opacity: .45;
+  cursor: not-allowed;
+}
+
+.mrr_dp__nav:focus{
+  box-shadow: var(--mrr-dp-focus);
+  outline: none;
+}
+
+.mrr_dp__nav span{
+  font-size: 2.0rem;
+  line-height: 1;
+}
+
+.mrr_dp__selects{
+  display: inline-flex;
+  gap: .8rem;
+  justify-content: center;
+}
+
+.mrr_dp__select{
+  position: relative;
+}
+
+.mrr_dp__selectBtn{
+  height: 3.6rem;
+  padding: 0 1.0rem;
+  border: .1rem solid var(--mrr-dp-border);
+  background: var(--mrr-dp-bg);
+  border-radius: .9rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: .6rem;
+  font-size: 1.4rem;
+  color: var(--mrr-dp-fg);
+  white-space: nowrap;
+}
+
+.mrr_dp__selectBtn:focus{
+  box-shadow: var(--mrr-dp-focus);
+  outline: none;
+}
+
+.mrr_dp__chev{
+  color: var(--mrr-dp-muted);
+  font-size: 1.2rem;
+}
+
+.mrr_dp__menu{
+  position: absolute;
+  top: calc(100% + .6rem);
+  left: 0;
+  min-width: 100%;
+  background: var(--mrr-dp-bg);
+  border: .1rem solid var(--mrr-dp-border);
+  border-radius: 1.0rem;
+  box-shadow: var(--mrr-dp-shadow);
+  padding: .6rem;
+  display: none;
+  max-height: 22rem;
+  overflow: auto;
+  z-index: 2;
+}
+
+.mrr_dp__select[data-open="1"] .mrr_dp__menu{
+  display: block;
+}
+
+.mrr_dp__menuBtn{
+  width: 100%;
+  text-align: left;
+  padding: .8rem .9rem;
+  border: none;
+  background: transparent;
+  border-radius: .8rem;
+  cursor: pointer;
+  font-size: 1.4rem;
+  color: var(--mrr-dp-fg);
+}
+
+.mrr_dp__menuBtn:hover{
+  background: rgba(17,17,17,.06);
+}
+
+.mrr_dp__menuBtn[aria-current="true"]{
+  background: rgba(17,17,17,.10);
+  font-weight: 600;
+}
+
+/* DOW e grid */
+.mrr_dp__dow{
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: .4rem;
+  padding: .6rem .2rem .2rem;
+  color: var(--mrr-dp-muted);
+  font-size: 1.2rem;
+}
+
+.mrr_dp__dow div{
+  text-align: center;
+  padding: .4rem 0;
+}
+
+.mrr_dp__grid{
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: .4rem;
+  padding: .4rem .2rem .2rem;
+}
+
+.mrr_dp__day{
+  width: 100%;
+  height: var(--mrr-dp-day-size);
+  border: none;
+  background: transparent;
+  border-radius: 1.0rem;
+  cursor: pointer;
+  font-size: 1.4rem;
+  color: var(--mrr-dp-fg);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mrr_dp__day:hover{
+  background: rgba(17,17,17,.06);
+}
+
+.mrr_dp__day:focus{
+  outline: none;
+  box-shadow: var(--mrr-dp-focus);
+}
+
+.mrr_dp__day[data-outside="1"]{
+  color: rgba(17,17,17,.35);
+}
+
+.mrr_dp__day:disabled{
+  cursor: not-allowed;
+  color: rgba(17,17,17,.25);
+  background: transparent;
+}
+
+.mrr_dp__day[data-selected="1"]{
+  background: #111111;
+  color: #ffffff;
+}
+
+.mrr_dp__day[data-today="1"]:not([data-selected="1"]){
+  border: .1rem solid rgba(17,17,17,.25);
+}
+
+.mrr_dp__day[data-inrange="1"]:not([data-selected="1"]){
+  background: rgba(17,17,17,.08);
+}
+
+/* Range: fim com contorno (estilo print 2) */
+.mrr_dp__day[data-range-end="1"]{
+  border: .2rem solid #111111;
+  background: transparent;
+  color: #111111;
+}
+
+.mrr_dp__day[data-range-end="1"][data-inrange="1"]{
+  background: rgba(17,17,17,.08);
+}
+
+.mrr_dp--invalid .mrr_dp__display{
+  border-color: rgba(220,38,38,.5);
+  box-shadow: 0 0 0 .3rem rgba(220,38,38,.10);
+}
+
+/* =========================
+   RANGE UI (1 input só)
+   ========================= */
+.mrr_dp--range .mrr_dp__popover{
+  width: 70rem;
+  max-width: calc(100vw - 2rem);
+}
+
+.mrr_dp__rangeHeader{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.2rem;
+  margin-bottom: .8rem;
+}
+
+.mrr_dp__rangeTitle{
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--mrr-dp-fg);
+}
+
+.mrr_dp__link{
+  border: none;
+  background: transparent;
+  color: #2563eb;
+  cursor: pointer;
+  font-size: 1.4rem;
+  padding: .4rem .6rem;
+  border-radius: .6rem;
+}
+
+.mrr_dp__link:hover{
+  background: rgba(37,99,235,.08);
+}
+
+.mrr_dp__rangeFields{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: .8rem;
+  margin-bottom: 1.0rem;
+}
+
+.mrr_dp__field{
+  border: .1rem solid var(--mrr-dp-border);
+  border-radius: .9rem;
+  padding: .8rem .9rem;
+  background: var(--mrr-dp-bg);
+}
+
+.mrr_dp__fieldLabel{
+  display: block;
+  font-size: 1.2rem;
+  color: var(--mrr-dp-muted);
+  margin-bottom: .3rem;
+}
+
+.mrr_dp__fieldValue{
+  font-size: 1.4rem;
+  color: var(--mrr-dp-fg);
+  min-height: 1.8rem;
+}
+
+.mrr_dp__months{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.2rem;
+}
+
+.mrr_dp__month{
+  border-radius: 1.0rem;
+}
+
+.mrr_dp__monthHead{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: .2rem .2rem .6rem;
+}
+
+.mrr_dp__monthName{
+  font-size: 1.6rem;
+  font-weight: 500;
+  text-transform: lowercase;
+}
+
+.mrr_dp__footer{
+  display: flex;
+  justify-content: flex-end;
+  gap: .8rem;
+  padding-top: 1.0rem;
+}
+
+.mrr_dp__primary{
+  border: none;
+  background: #2563eb;
+  color: #ffffff;
+  border-radius: 999rem;
+  padding: .9rem 1.4rem;
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
+.mrr_dp__primary:disabled{
+  opacity: .55;
+  cursor: not-allowed;
+}
+
+.mrr_dp__ghost{
+  border: .1rem solid var(--mrr-dp-border);
+  background: var(--mrr-dp-bg);
+  color: var(--mrr-dp-fg);
+  border-radius: 999rem;
+  padding: .9rem 1.2rem;
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
+@media (min-width: 860px){
+  .mrr_dp__months{
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 420px){
+  .mrr_dp__popover{
+    width: 100%;
+  }
+}
